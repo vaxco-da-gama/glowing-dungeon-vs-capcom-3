@@ -1,1 +1,0 @@
-# glowing-dungeon-vs-capcom-3
