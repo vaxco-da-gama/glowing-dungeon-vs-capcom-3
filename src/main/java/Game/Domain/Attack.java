@@ -3,20 +3,22 @@ package Game.Domain;
 public class Attack {
 	private String name;
 	private String description;
-	private int level;
+	private int minimumLevel;
 	private int manaCost;
 	private int damage;
 	private int heal;
 	private boolean random;
+	private boolean onlyBoss;
 
-	public Attack(String name, String description, int level, int manaCost, int damage, int heal, boolean random) {
+	public Attack(String name, String description, int minimumLevel, int manaCost, int damage, int heal, boolean random, boolean onlyBoss) {
 		this.name = name;
 		this.description = description;
-		this.level = level;
+		this.minimumLevel = minimumLevel;
 		this.manaCost = manaCost;
 		this.damage = damage;
 		this.heal = heal;
 		this.random = random;
+		this.onlyBoss = onlyBoss;
 	}
 
 	public String getName() {
@@ -36,11 +38,11 @@ public class Attack {
 	}
 
 	public int getLevel() {
-		return level;
+		return minimumLevel;
 	}
 
 	public void setLevel(int level) {
-		this.level = level;
+		this.minimumLevel = level;
 	}
 
 	public int getManaCost() {
@@ -73,5 +75,13 @@ public class Attack {
 
 	public void setRandom(boolean random) {
 		this.random = random;
+	}
+
+	public boolean isOnlyBoss() {
+		return onlyBoss;
+	}
+
+	public void setOnlyBoss(boolean onlyBoss) {
+		this.onlyBoss = onlyBoss;
 	}
 }
