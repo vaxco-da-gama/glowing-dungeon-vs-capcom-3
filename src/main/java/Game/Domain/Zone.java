@@ -5,22 +5,24 @@ import Game.Creatures.Enemy;
 import Game.Users.Admin;
 import Game.Users.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Zone {
 	private String name;
 	private String description;
 	private Admin creator;
-	private Enemy[] enemies;
-	private Character characters;
-	private User[] bannedUsers;
+	private List<Enemy> enemies = new ArrayList<>();
+	private List<User> bannedUsers = new ArrayList<>();
+	private List<Wave> waves = new ArrayList<>();
 
-	public Zone(String name, String description, Admin creator, Enemy[] enemies, Character characters,
-			User[] bannedUsers) {
+	public Zone(String name, String description, Admin creator, List<Enemy> enemies, List<User> bannedUsers, List<Wave> waves) {
 		this.name = name;
 		this.description = description;
 		this.creator = creator;
 		this.enemies = enemies;
-		this.characters = characters;
 		this.bannedUsers = bannedUsers;
+		this.waves = waves;
 	}
 
 	public String getName() {
@@ -47,27 +49,27 @@ public class Zone {
 		this.creator = creator;
 	}
 
-	public Enemy[] getEnemies() {
+	public List<Enemy> getEnemies() {
 		return enemies;
 	}
 
-	public void setEnemies(Enemy[] enemies) {
+	public void setEnemies(List<Enemy> enemies) {
 		this.enemies = enemies;
 	}
 
-	public Character getCharacters() {
-		return characters;
-	}
-
-	public void setCharacters(Character characters) {
-		this.characters = characters;
-	}
-
-	public User[] getBannedUsers() {
+	public List<User> getBannedUsers() {
 		return bannedUsers;
 	}
 
-	public void setBannedUsers(User[] bannedUsers) {
+	public void setBannedUsers(List<User> bannedUsers) {
 		this.bannedUsers = bannedUsers;
+	}
+
+	public List<Wave> getWaves() {
+		return waves;
+	}
+
+	public void setWaves(List<Wave> waves) {
+		this.waves = waves;
 	}
 }

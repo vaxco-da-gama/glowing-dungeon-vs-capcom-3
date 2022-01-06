@@ -1,12 +1,15 @@
 package Game.Users;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player extends User {
 	private int matches;
 	private int wins;
 	private int loses;
-	private Character[] characters;
+	private List<Character> characters = new ArrayList<>();
 
-	public Player(String name, String email, String password, int matches, int wins, int loses, Character[] characters) {
+	public Player(String name, String email, String password, int matches, int wins, int loses, List<Character> characters) {
 		super(name, email, password);
 		this.matches = matches;
 		this.wins = wins;
@@ -38,11 +41,11 @@ public class Player extends User {
 		this.loses = loses;
 	}
 
-	public Character[] getCharacters() {
+	public List<Character> getCharacters() {
 		return characters;
 	}
 
-	public void setCharacters(Character[] characters) {
+	public void setCharacters(List<Character> characters) {
 		this.characters = characters;
 	}
 }

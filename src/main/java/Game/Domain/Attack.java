@@ -1,6 +1,6 @@
-package Game.Utilities;
+package Game.Domain;
 
-public class Attacks {
+public class Attack {
 	private String name;
 	private String description;
 	private int level;
@@ -9,7 +9,7 @@ public class Attacks {
 	private int heal;
 	private boolean random;
 
-	public Attacks(String name, String description, int level, int manaCost, int damage, int heal, boolean random) {
+	public Attack(String name, String description, int level, int manaCost, int damage, int heal, boolean random) {
 		this.name = name;
 		this.description = description;
 		this.level = level;

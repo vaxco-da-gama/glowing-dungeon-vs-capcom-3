@@ -1,15 +1,18 @@
 package Game.Domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Clan {
 	private String name;
 	private String description;
-	private String attacks;
+	private List<Attack> attacks = new ArrayList<>();
 	private int constitutionMultiplier;
 	private int strengthMultiplier;
 	private int intelligenceMultiplier;
 	private int dexterityMultiplier;
 
-	public Clan(String name, String description, String attacks, int constitutionMultiplier, int strengthMultiplier,
+	public Clan(String name, String description, List<Attack> attacks, int constitutionMultiplier, int strengthMultiplier,
 			int intelligenceMultiplier, int dexterityMultiplier) {
 		this.name = name;
 		this.description = description;
@@ -36,11 +39,11 @@ public class Clan {
 		this.description = description;
 	}
 
-	public String getAttacks() {
+	public List<Attack> getAttacks() {
 		return attacks;
 	}
 
-	public void setAttacks(String attacks) {
+	public void setAttacks(List<Attack> attacks) {
 		this.attacks = attacks;
 	}
 

@@ -2,7 +2,10 @@ package Game.Creatures;
 
 import Game.Domain.Clan;
 import Game.Users.Player;
-import Game.Utilities.Attacks;
+import Game.Domain.Attack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Character extends Creature {
 	private Player creator;
@@ -12,10 +15,11 @@ public class Character extends Creature {
 	private int strength;
 	private int intelligence;
 	private int dexterity;
-	private Attacks[] attacks;
+	private List<Attack> attacks;
+	private List<String> completedZones = new ArrayList<>();
 
 	public Character(String name, Clan clan, String level, Player creator, int experience, int mana, int constitution,
-			int strength, int intelligence, int dexterity, Attacks[] attacks) {
+			int strength, int intelligence, int dexterity, List<Attack> attacks) {
 		super(name, clan, level);
 		this.creator = creator;
 		this.experience = experience;
@@ -83,11 +87,19 @@ public class Character extends Creature {
 		this.dexterity = dexterity;
 	}
 
-	public Attacks[] getAttacks() {
+	public List<Attack> getAttacks() {
 		return attacks;
 	}
 
-	public void setAttacks(Attacks[] attacks) {
+	public void setAttacks(List<Attack> attacks) {
 		this.attacks = attacks;
+	}
+
+	public List<String> getCompletedZones() {
+		return completedZones;
+	}
+
+	public void setCompletedZones(List<String> completedZones) {
+		this.completedZones = completedZones;
 	}
 }
