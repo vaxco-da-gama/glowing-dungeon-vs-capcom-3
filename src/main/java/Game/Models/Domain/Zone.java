@@ -8,20 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zone {
+	private String id;
 	private String name;
 	private String description;
 	private Admin creator;
-	private List<Enemy> enemies = new ArrayList<>();
 	private List<User> bannedUsers = new ArrayList<>();
 	private List<Wave> waves = new ArrayList<>();
 
-	public Zone(String name, String description, Admin creator, List<Enemy> enemies, List<User> bannedUsers, List<Wave> waves) {
+	public Zone(String id, String name, String description, Admin creator, List<User> bannedUsers,
+			List<Wave> waves) {
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.creator = creator;
-		this.enemies = enemies;
 		this.bannedUsers = bannedUsers;
 		this.waves = waves;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -46,14 +51,6 @@ public class Zone {
 
 	public void setCreator(Admin creator) {
 		this.creator = creator;
-	}
-
-	public List<Enemy> getEnemies() {
-		return enemies;
-	}
-
-	public void setEnemies(List<Enemy> enemies) {
-		this.enemies = enemies;
 	}
 
 	public List<User> getBannedUsers() {

@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Clan {
+	private String id;
 	private String name;
 	private String description;
 	private List<Attack> attacks = new ArrayList<>();
 	private int constitutionMultiplier;
-	private int strengthMultiplier;	
+	private int strengthMultiplier;
 	private int intelligenceMultiplier;
 	private int dexterityMultiplier;
 
-	public Clan(String name, String description, List<Attack> attacks, int constitutionMultiplier, int strengthMultiplier,
+	public Clan(String id, String name, String description, List<Attack> attacks, int constitutionMultiplier,
+			int strengthMultiplier,
 			int intelligenceMultiplier, int dexterityMultiplier) {
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.attacks = attacks;
@@ -21,6 +24,10 @@ public class Clan {
 		this.strengthMultiplier = strengthMultiplier;
 		this.intelligenceMultiplier = intelligenceMultiplier;
 		this.dexterityMultiplier = dexterityMultiplier;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getName() {

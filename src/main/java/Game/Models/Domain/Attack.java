@@ -1,6 +1,7 @@
 package Game.Models.Domain;
 
 public class Attack {
+	private String id;
 	private String name;
 	private String description;
 	private int minimumLevel;
@@ -10,7 +11,11 @@ public class Attack {
 	private boolean random;
 	private boolean onlyBoss;
 
-	public Attack(String name, String description, int minimumLevel, int manaCost, int damage, int heal, boolean random, boolean onlyBoss) {
+	public Attack(String id, String name, String description, int minimumLevel, int manaCost, int damage, int heal,
+			boolean random,
+			boolean onlyBoss) {
+
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.minimumLevel = minimumLevel;
@@ -19,6 +24,10 @@ public class Attack {
 		this.heal = heal;
 		this.random = random;
 		this.onlyBoss = onlyBoss;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -37,11 +46,11 @@ public class Attack {
 		this.description = description;
 	}
 
-	public int getLevel() {
+	public int getMinimumLevel() {
 		return minimumLevel;
 	}
 
-	public void setLevel(int level) {
+	public void setMinimumLevel(int level) {
 		this.minimumLevel = level;
 	}
 
