@@ -13,7 +13,7 @@ import Game.Controllers.EnemyController;
 import Game.Controllers.PlayerController;
 import Game.Controllers.UserController;
 import Game.Controllers.WaveController;
-import Game.Models.Users.Player;
+import Game.Controllers.ZoneController;
 
 public final class Database {
 	public static final String PATH_FOLDER = "src/main/java/Game/Database/Saves/";
@@ -25,6 +25,7 @@ public final class Database {
 	public static PlayerController playerController = new PlayerController();
 	public static UserController userController = new UserController();
 	public static WaveController waveController = new WaveController();
+	public static ZoneController zoneController = new ZoneController();
 
 	public static void write(File file, String json) {
 		try {
@@ -62,5 +63,6 @@ public final class Database {
 		enemyController.load();
 		playerController.load();
 		waveController.load();
+		zoneController.load();
 	}
 }
