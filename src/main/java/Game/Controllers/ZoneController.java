@@ -36,13 +36,13 @@ public class ZoneController implements Controller {
 		return null;
 	}
 
-	public static Zone create(String name, String description, Admin creator, List<Enemy> enemies,
+	public static Zone create(String name, String description, Admin creator,
 			List<User> bannedUsers,
 			List<Wave> waves) {
 
 		String zoneId = UUID.randomUUID().toString();
 
-		Zone zone = new Zone(zoneId, name, description, creator, enemies, bannedUsers, waves);
+		Zone zone = new Zone(zoneId, name, description, creator, bannedUsers, waves);
 
 		zones.add(zone);
 
@@ -59,7 +59,6 @@ public class ZoneController implements Controller {
 		zone.setName(newZone.getName());
 		zone.setDescription(newZone.getDescription());
 		zone.setCreator(newZone.getCreator());
-		zone.setEnemies(newZone.getEnemies());
 		zone.setBannedUsers(newZone.getBannedUsers());
 		zone.setWaves(newZone.getWaves());
 
