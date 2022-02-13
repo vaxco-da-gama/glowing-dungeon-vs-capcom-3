@@ -1,16 +1,20 @@
-package Game.Creatures;
+package Game.Models.Creatures;
 
-import Game.Domain.Clan;
-import Game.Users.Player;
-import Game.Domain.Attack;
+import Game.Models.Domain.Clan;
+import Game.Models.Domain.Attack;
+import Game.Models.Users.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Character extends Creature {
+public class Character implements Creature {
 	private Player creator;
+	private String name;
+	private Clan clan;
+	private int level;
 	private int experience;
 	private int mana;
+	private int maxMana;
 	private int constitution;
 	private int strength;
 	private int intelligence;
@@ -18,17 +22,18 @@ public class Character extends Creature {
 	private List<Attack> attacks;
 	private List<String> completedZones = new ArrayList<>();
 
-	public Character(String name, Clan clan, String level, Player creator, int experience, int mana, int constitution,
-			int strength, int intelligence, int dexterity, List<Attack> attacks) {
-		super(name, clan, level);
+	public Character(Player creator,String name, Clan clan) {
 		this.creator = creator;
-		this.experience = experience;
-		this.mana = mana;
-		this.constitution = constitution;
-		this.strength = strength;
-		this.intelligence = intelligence;
-		this.dexterity = dexterity;
-		this.attacks = attacks;
+		this.name = name;
+		this.clan = clan;
+		this.level = 1;
+		this.experience = 0;
+		this.maxMana = 10;
+
+		this.constitution = this.clan.getConstitutionMultiplier();
+		this.strength = this.clan.getStrengthMultiplier();
+		this.intelligence = this.clan.getIntelligenceMultiplier();
+		this.dexterity = this.clan.getDexterityMultiplier();
 	}
 
 	public Player getCreator() {
@@ -37,6 +42,30 @@ public class Character extends Creature {
 
 	public void setCreator(Player creator) {
 		this.creator = creator;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Clan getClan() {
+		return clan;
+	}
+
+	public void setClan(Clan clan) {
+		this.clan = clan;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public int getExperience() {
@@ -53,6 +82,14 @@ public class Character extends Creature {
 
 	public void setMana(int mana) {
 		this.mana = mana;
+	}
+
+	public int getMaxMana() {
+		return maxMana;
+	}
+
+	public void setMaxMana(int maxMana) {
+		this.maxMana = maxMana;
 	}
 
 	public int getConstitution() {
@@ -85,21 +122,5 @@ public class Character extends Creature {
 
 	public void setDexterity(int dexterity) {
 		this.dexterity = dexterity;
-	}
-
-	public List<Attack> getAttacks() {
-		return attacks;
-	}
-
-	public void setAttacks(List<Attack> attacks) {
-		this.attacks = attacks;
-	}
-
-	public List<String> getCompletedZones() {
-		return completedZones;
-	}
-
-	public void setCompletedZones(List<String> completedZones) {
-		this.completedZones = completedZones;
 	}
 }

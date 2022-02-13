@@ -1,4 +1,4 @@
-package Game.Users;
+package Game.Models.Users;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,9 @@ public class Player extends User {
 	private int loses;
 	private List<Character> characters = new ArrayList<>();
 
-	public Player(String name, String email, String password, int matches, int wins, int loses, List<Character> characters) {
-		super(name, email, password);
+	public Player(String id, String name, String email, String password, int level, int matches, int wins, int loses,
+			List<Character> characters) {
+		super(id, name, email, password, level);
 		this.matches = matches;
 		this.wins = wins;
 		this.loses = loses;

@@ -1,9 +1,8 @@
-package Game.Domain;
+package Game.Models.Domain;
 
-import Game.Creatures.Character;
-import Game.Creatures.Enemy;
-import Game.Users.Admin;
-import Game.Users.User;
+import Game.Models.Creatures.Enemy;
+import Game.Models.Users.Admin;
+import Game.Models.Users.User;
 
 import java.util.ArrayList;
 import java.util.List;

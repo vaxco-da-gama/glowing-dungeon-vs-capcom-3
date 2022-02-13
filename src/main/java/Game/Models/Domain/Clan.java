@@ -1,4 +1,4 @@
-package Game.Domain;
+package Game.Models.Domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ public class Clan {
 	private String description;
 	private List<Attack> attacks = new ArrayList<>();
 	private int constitutionMultiplier;
-	private int strengthMultiplier;
+	private int strengthMultiplier;	
 	private int intelligenceMultiplier;
 	private int dexterityMultiplier;
 

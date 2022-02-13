@@ -1,4 +1,4 @@
-package Game.Domain;
+package Game.Models.Domain;
 
 public class Attack {
 	private String name;

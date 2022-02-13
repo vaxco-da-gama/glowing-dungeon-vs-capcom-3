@@ -1,6 +1,6 @@
-package Game.Domain;
+package Game.Models.Domain;
 
-import Game.Creatures.Enemy;
+import Game.Models.Creatures.Enemy;
 
 import java.util.ArrayList;
 import java.util.List;
