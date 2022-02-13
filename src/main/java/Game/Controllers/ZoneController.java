@@ -16,11 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ZoneController {
+public class ZoneController implements Controller {
 	private static final String FILE_NAME = "zones.json";
 	private static final String FILE_PATH = Database.PATH_FOLDER + FILE_NAME;
 
 	private static ArrayList<Zone> zones = new ArrayList<>();
+
+	public static List<Zone> findAll() {
+		return zones;
+	}
 
 	public static Zone findById(String id) {
 		for (Zone zone : zones) {
@@ -71,7 +75,7 @@ public class ZoneController {
 		}
 	}
 
-	public static void save() {
+	public void save() {
 		Gson gson = new Gson();
 		File file = new File(FILE_PATH);
 
@@ -80,7 +84,7 @@ public class ZoneController {
 		Database.write(file, json);
 	}
 
-	public static void load() {
+	public void load() {
 		Gson gson = new Gson();
 
 		String stringFile = Database.read(FILE_PATH);
