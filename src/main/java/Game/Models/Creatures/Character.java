@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Character implements Creature {
+	private String id;
 	private Player creator;
 	private String name;
 	private Clan clan;
@@ -19,10 +20,11 @@ public class Character implements Creature {
 	private int strength;
 	private int intelligence;
 	private int dexterity;
-	private List<Attack> attacks;
+	private List<Attack> attacks = new ArrayList<>();
 	private List<String> completedZones = new ArrayList<>();
 
-	public Character(Player creator,String name, Clan clan) {
+	public Character(String id, Player creator, String name, Clan clan) {
+		this.id = id;
 		this.creator = creator;
 		this.name = name;
 		this.clan = clan;
@@ -34,6 +36,10 @@ public class Character implements Creature {
 		this.strength = this.clan.getStrengthMultiplier();
 		this.intelligence = this.clan.getIntelligenceMultiplier();
 		this.dexterity = this.clan.getDexterityMultiplier();
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public Player getCreator() {
@@ -122,5 +128,21 @@ public class Character implements Creature {
 
 	public void setDexterity(int dexterity) {
 		this.dexterity = dexterity;
+	}
+
+	public List<Attack> getAttacks() {
+		return attacks;
+	}
+
+	public void setAttacks(List<Attack> attacks) {
+		this.attacks = attacks;
+	}
+
+	public List<String> getCompletedZones() {
+		return completedZones;
+	}
+
+	public void setCompletedZones(List<String> completedZones) {
+		this.completedZones = completedZones;
 	}
 }

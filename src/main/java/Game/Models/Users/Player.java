@@ -9,13 +9,11 @@ public class Player extends User {
 	private int loses;
 	private List<Character> characters = new ArrayList<>();
 
-	public Player(String id, String name, String email, String password, int level, int matches, int wins, int loses,
-			List<Character> characters) {
+	public Player(String id, String name, String email, String password, int level) {
 		super(id, name, email, password, level);
-		this.matches = matches;
-		this.wins = wins;
-		this.loses = loses;
-		this.characters = characters;
+		this.matches = 0;
+		this.wins = 0;
+		this.loses = 0;
 	}
 
 	public int getMatches() {

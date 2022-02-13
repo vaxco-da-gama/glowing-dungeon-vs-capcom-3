@@ -6,16 +6,21 @@ import Game.Models.Users.User;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class UserController {
+public class UserController implements Controller {
 	private static final String FILE_NAME = "users.json";
 	private static final String FILE_PATH = Database.PATH_FOLDER + FILE_NAME;
 
 	private static ArrayList<User> users = new ArrayList<>();
+
+	public static List<User> findAll() {
+		return users;
+	}
 
 	public static User findById(String id) {
 		for (User user : users) {
@@ -60,7 +65,7 @@ public class UserController {
 		}
 	}
 
-	public static void save() {
+	public void save() {
 		Gson gson = new Gson();
 		File file = new File(FILE_PATH);
 
@@ -69,7 +74,7 @@ public class UserController {
 		Database.write(file, json);
 	}
 
-	public static void load() {
+	public void load() {
 		Gson gson = new Gson();
 
 		String stringFile = Database.read(FILE_PATH);
@@ -80,5 +85,15 @@ public class UserController {
 		ArrayList<User> userArray = gson.fromJson(stringFile, type);
 
 		users = userArray;
+	}
+
+	public User login(String email, String password) {
+		for (User user : users) {
+			if (user.getEmail() == email && user.getPassword() == password) {
+				return user;
+			}
+		}
+
+		return null;
 	}
 }
