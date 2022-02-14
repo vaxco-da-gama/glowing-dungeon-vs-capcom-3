@@ -2,7 +2,11 @@ package Game.View;
 
 import javax.swing.*;
 
+import Game.Controllers.PlayerController;
 import Game.Controllers.UserController;
+import Game.Models.Users.Player;
+import Game.Models.Users.User;
+import Game.Utils.Session;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -69,8 +73,46 @@ public class AuthView extends JFrame {
 			return;
 		}
 
-		UserController.signUp(name, email, password);
+		User newUser = UserController.signUp(name, email, password);
+
+		if (newUser == null) {
+			JOptionPane.showMessageDialog(null, "Email já cadastrado!");
+			return;
+		}
+
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
 
+		// this.dispose();
+	}
+
+	private void SignIn() {
+		String email = siEmailField.getText();
+		String password = new String(siPasswordField.getPassword());
+
+		if (email.isEmpty() || password.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+			return;
+		}
+
+		User user = UserController.signIn(email, password);
+
+		if (user == null) {
+			JOptionPane.showMessageDialog(null, "Email ou senha incorretos!");
+			return;
+		}
+
+		JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
+
+		if (Session.getAdmin() != null) {
+			this.dispose();
+			// new AdminView();
+		}
+
+		if (Session.getPlayer() != null) {
+			this.dispose();
+			// new PlayerView();
+		}
+
+		// this.dispose();
 	}
 }
