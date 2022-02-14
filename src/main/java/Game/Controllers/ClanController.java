@@ -33,9 +33,15 @@ public class ClanController implements Controller {
 		return null;
 	}
 
-	public static Clan create(String name, String description, List<Attack> attacks, int constitutionMultiplier,
-			int strengthMultiplier,
-			int intelligenceMultiplier, int dexterityMultiplier) {
+	public static Clan create(
+		String name, 
+		String description, 
+		List<Attack> attacks, 
+		int constitutionMultiplier,
+		int strengthMultiplier,
+		int intelligenceMultiplier, 
+		int dexterityMultiplier
+	) throws Exception {
 
 		String clanId = UUID.randomUUID().toString();
 
