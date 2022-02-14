@@ -10,7 +10,7 @@ public class Application {
 		Database.load();
 
 		renderPages();
-		
+
 		Database.save();
 	}
 
