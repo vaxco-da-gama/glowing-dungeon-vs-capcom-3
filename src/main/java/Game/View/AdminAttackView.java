@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class EnemyAdminView extends JFrame {
+public class AdminAttackView extends JFrame {
 	private JPanel container;
 	private JPanel form;
 	private JPanel submitContainer;

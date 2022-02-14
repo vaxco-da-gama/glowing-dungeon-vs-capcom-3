@@ -1,13 +1,11 @@
 package Game.View;
 
 import javax.swing.*;
-import javax.swing.text.ZoneView;
 
 import Game.Config.Screen;
 import Game.Controllers.UserController;
 import Game.Database.Database;
 
-import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -69,7 +67,7 @@ public class AdminView extends JFrame {
 
 	private void redirectToZoneView() {
 		try {
-			ZoneAdminView zoneAdminView = new ZoneAdminView();
+			AdminZoneView zoneAdminView = new AdminZoneView();
 			zoneAdminView.render();
 			dispose();
 		} catch (Exception e) {
