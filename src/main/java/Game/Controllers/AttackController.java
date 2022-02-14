@@ -92,6 +92,9 @@ public class AttackController implements Controller {
 
 		ArrayList<Attack> attackArray = gson.fromJson(stringFile, type);
 
-		attacks = attackArray;
+		if (attackArray != null) {
+			attacks = attackArray;
+		}
+
 	}
 }

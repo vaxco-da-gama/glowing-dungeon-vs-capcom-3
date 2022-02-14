@@ -3,13 +3,11 @@ package Game.Controllers;
 import Game.Database.Database;
 import Game.Models.Users.Admin;
 
-import Game.Utils.Crypto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.lang.reflect.Type;
-import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -24,6 +22,16 @@ public class AdminController implements Controller {
 		return admins;
 	}
 
+	public static Admin findByEmail(String email) {
+		for (Admin admin : admins) {
+			if (admin.getEmail().equalsIgnoreCase(email)) {
+				return admin;
+			}
+		}
+
+		return null;
+	}
+
 	public static Admin findById(String id) {
 		for (Admin admin : admins) {
 			if (admin.getId().equalsIgnoreCase(id)) {
@@ -36,9 +44,8 @@ public class AdminController implements Controller {
 
 	public static Admin create(String name, String email, String password) {
 		String adminId = UUID.randomUUID().toString();
-		String crytoPassword = Crypto.getHashMd5(password);
-			
-		Admin admin = new Admin(adminId, name, email, crytoPassword);
+
+		Admin admin = new Admin(adminId, name, email, password);
 		admins.add(admin);
 
 		return admin;
@@ -86,6 +93,8 @@ public class AdminController implements Controller {
 
 		ArrayList<Admin> adminArray = gson.fromJson(stringFile, type);
 
-		admins = adminArray;
+		if (adminArray != null) {
+			admins = adminArray;
+		}
 	}
 }

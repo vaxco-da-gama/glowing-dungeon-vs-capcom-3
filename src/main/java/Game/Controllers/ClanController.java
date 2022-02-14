@@ -93,6 +93,9 @@ public class ClanController implements Controller {
 
 		ArrayList<Clan> clanArray = gson.fromJson(stringFile, type);
 
-		clans = clanArray;
+		if (clanArray != null) {
+			clans = clanArray;
+		}
+
 	}
 }

@@ -1,7 +1,6 @@
 package Game.Controllers;
 
 import Game.Database.Database;
-import Game.Models.Creatures.Enemy;
 import Game.Models.Domain.Wave;
 import Game.Models.Domain.Zone;
 import Game.Models.Users.Admin;
@@ -93,6 +92,8 @@ public class ZoneController implements Controller {
 
 		ArrayList<Zone> zoneArray = gson.fromJson(stringFile, type);
 
-		zones = zoneArray;
+		if (zoneArray != null) {
+			zones = zoneArray;
+		}
 	}
 }

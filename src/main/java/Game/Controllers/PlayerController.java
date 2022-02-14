@@ -22,6 +22,16 @@ public class PlayerController implements Controller {
 		return players;
 	}
 
+	public static Player findByEmail(String email) {
+		for (Player player : players) {
+			if (player.getEmail().equalsIgnoreCase(email)) {
+				return player;
+			}
+		}
+
+		return null;
+	}
+
 	public static Player findById(String id) {
 		for (Player player : players) {
 			if (player.getId().equalsIgnoreCase(id)) {
@@ -83,6 +93,8 @@ public class PlayerController implements Controller {
 
 		ArrayList<Player> playerArray = gson.fromJson(stringFile, type);
 
-		players = playerArray;
+		if (playerArray != null) {
+			players = playerArray;
+		}
 	}
 }

@@ -1,17 +1,20 @@
 package Game;
 
-import Game.Controllers.AdminController;
 import Game.Database.Database;
-import Game.View.SelectZoneView;
+import Game.View.AuthView;
 import Game.View.WaveView;
 
 public class Application {
 
 	public static void main(String[] args) {
-		// Database.load();
+		Database.load();
 
-		AdminController.create("Admin", "admin@gmail.com", "senha123");
+		renderPages();
+		
+		Database.save();
+	}
 
-		new WaveView();
+	public static void renderPages() {
+		new AuthView();
 	}
 }

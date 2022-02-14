@@ -1,5 +1,7 @@
 package Game.Models.Users;
 
+import Game.Utils.Crypto;
+
 public class User {
 	private String id;
 	private String name;
@@ -7,10 +9,12 @@ public class User {
 	private String password;
 
 	public User(String id, String name, String email, String password) {
+		String crytoPassword = Crypto.getHashMd5(password);
+
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.password = password;
+		this.password = crytoPassword;
 	}
 
 	public String getId() {

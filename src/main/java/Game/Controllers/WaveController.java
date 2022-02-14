@@ -86,6 +86,8 @@ public class WaveController implements Controller {
 
 		ArrayList<Wave> waveArray = gson.fromJson(stringFile, type);
 
-		waves = waveArray;
+		if (waveArray != null) {
+			waves = waveArray;
+		}
 	}
 }
