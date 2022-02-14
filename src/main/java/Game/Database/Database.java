@@ -10,7 +10,6 @@ import Game.Controllers.CharacterController;
 import Game.Controllers.ClanController;
 import Game.Controllers.EnemyController;
 import Game.Controllers.UserController;
-import Game.Controllers.WaveController;
 import Game.Controllers.ZoneController;
 
 public final class Database {
@@ -20,7 +19,6 @@ public final class Database {
 	public static ClanController clanController = new ClanController();
 	public static EnemyController enemyController = new EnemyController();
 	public static UserController userController = new UserController();
-	public static WaveController waveController = new WaveController();
 	public static ZoneController zoneController = new ZoneController();
 
 	public static void write(File file, String json) {
@@ -56,7 +54,6 @@ public final class Database {
 		characterController.load();
 		clanController.load();
 		enemyController.load();
-		waveController.load();
 		zoneController.load();
 	}
 
@@ -66,7 +63,6 @@ public final class Database {
 		characterController.save();
 		clanController.save();
 		enemyController.save();
-		waveController.save();
 		zoneController.save();
 	}
 }

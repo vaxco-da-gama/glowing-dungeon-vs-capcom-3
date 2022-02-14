@@ -20,6 +20,7 @@ public class ZoneAdminView extends JFrame {
 	private JButton submitButton;
 	private JButton removeButton;
 	private JButton voltarButton;
+	private JPanel Waves;
 
 	public void render() {
 		setupListeners();

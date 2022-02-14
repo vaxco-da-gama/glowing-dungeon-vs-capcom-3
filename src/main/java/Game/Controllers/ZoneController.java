@@ -1,10 +1,7 @@
 package Game.Controllers;
 
 import Game.Database.Database;
-import Game.Models.Domain.Wave;
 import Game.Models.Domain.Zone;
-import Game.Models.Users.Admin;
-import Game.Models.Users.User;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -39,7 +36,7 @@ public class ZoneController implements Controller {
 		String zoneId = UUID.randomUUID().toString();
 
 		Zone zone = new Zone(zoneId, name, description, null);
-		
+
 		zones.add(zone);
 
 		return zone;
@@ -56,7 +53,7 @@ public class ZoneController implements Controller {
 		zone.setDescription(newZone.getDescription());
 		zone.setCreator(newZone.getCreator());
 		zone.setBannedUsers(newZone.getBannedUsers());
-		zone.setWaves(newZone.getWaves());
+		zone.setEnemies(newZone.getEnemies());
 
 		return zone;
 	}

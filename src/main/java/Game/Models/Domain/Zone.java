@@ -13,31 +13,31 @@ public class Zone {
 	private String description;
 	private Admin creator;
 	private List<User> bannedUsers;
-	private List<Wave> waves;
+	private List<Enemy> enemies;
 
 	public Zone(String id, String name, String description, Admin creator) throws Exception {
 		if (id.length() == 0) {
 			throw new Exception("ID Inválido!");
 		}
-		
+
 		if (name.length() == 0) {
 			throw new Exception("Nome Inválido!");
 		}
-		
+
 		if (description.length() == 0) {
 			throw new Exception("Descrição Inválida!");
 		}
-		
-//		if (creator == null) {
-//			throw new Exception("Admin Inválido!");
-//		}	
-		
+
+		// if (creator == null) {
+		// throw new Exception("Admin Inválido!");
+		// }
+
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.creator = creator;
 		this.bannedUsers = new ArrayList<>();
-		this.waves = new ArrayList<>();		
+		this.enemies = new ArrayList<>();
 	}
 
 	public String getId() {
@@ -76,11 +76,11 @@ public class Zone {
 		this.bannedUsers = bannedUsers;
 	}
 
-	public List<Wave> getWaves() {
-		return waves;
+	public List<Enemy> getEnemies() {
+		return enemies;
 	}
 
-	public void setWaves(List<Wave> waves) {
-		this.waves = waves;
+	public void setEnemies(List<Enemy> waves) {
+		this.enemies = waves;
 	}
 }
