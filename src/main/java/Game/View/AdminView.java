@@ -58,6 +58,7 @@ public class AdminView extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				try {
 					Database.save();
+					JOptionPane.showMessageDialog(null, "Dados salvos no banco de dados");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -76,8 +77,10 @@ public class AdminView extends JFrame {
 	}
 
 	private void signOut() {
-		UserController.signOut();
 		Database.save();
+		JOptionPane.showMessageDialog(null, "Dados salvos no banco de dados");
+
+		UserController.signOut();
 
 		try {
 			AuthView authView = new AuthView();

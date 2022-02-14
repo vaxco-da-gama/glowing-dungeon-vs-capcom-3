@@ -2,6 +2,7 @@ package Game.View;
 
 import javax.swing.*;
 
+import Game.Config.Screen;
 import Game.Controllers.UserController;
 import Game.Models.Users.User;
 import Game.Utils.Session;
@@ -29,14 +30,10 @@ public class AuthView extends JFrame {
 	private JPasswordField suConfirmPasswordField;
 	private JButton suSubmitButton;
 
-	public AuthView() {
-		setContentPane(container);
-	}
-
 	public void render() {
 		setContentPane(container);
 		setTitle("Login");
-		setSize(400, 800);
+		setSize(Screen.width, Screen.height);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
 
