@@ -3,6 +3,7 @@ package Game.View;
 import javax.swing.*;
 import javax.swing.text.ZoneView;
 
+import Game.Controllers.UserController;
 import Game.Database.Database;
 
 import java.awt.*;
@@ -38,6 +39,13 @@ public class AdminView extends JFrame {
 	}
 
 	private void setupListeners() {
+		signOutButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				signOut();
+			}
+		});
+
 		zonasButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
@@ -61,6 +69,19 @@ public class AdminView extends JFrame {
 		try {
 			ZoneAdminView zoneAdminView = new ZoneAdminView();
 			zoneAdminView.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void signOut() {
+		UserController.signOut();
+		Database.save();
+
+		try {
+			AuthView authView = new AuthView();
+			authView.render();
 			dispose();
 		} catch (Exception e) {
 			e.printStackTrace();

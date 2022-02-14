@@ -80,4 +80,9 @@ public class UserController implements Controller {
 
 		return null;
 	}
+
+	public static void signOut() {
+		Session.setPlayer(null);
+		Session.setAdmin(null);
+	}
 }
