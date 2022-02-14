@@ -35,7 +35,7 @@ public class AuthView extends JFrame {
 
 	public void render() {
 		setContentPane(container);
-		setTitle("Stock Control | Products");
+		setTitle("Login");
 		setSize(400, 800);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
