@@ -55,6 +55,17 @@ public class AuthView extends JFrame {
 				}
 			}
 		});
+
+		siButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				try {
+					signIn();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	private void signUp() {
