@@ -42,7 +42,7 @@ public class PlayerController implements Controller {
 		return null;
 	}
 
-	public static Player create(String name, String email, String password) {
+	public static Player create(String name, String email, String password) throws Exception {
 		String playerId = UUID.randomUUID().toString();
 
 		Player player = new Player(playerId, name, email, password);

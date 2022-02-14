@@ -4,6 +4,7 @@ import Game.Models.Users.Admin;
 import Game.Models.Users.Player;
 import Game.Models.Users.User;
 import Game.Utils.Crypto;
+import Game.Utils.Form;
 import Game.Utils.Session;
 
 import java.util.ArrayList;
@@ -50,14 +51,31 @@ public class UserController implements Controller {
 		return users;
 	}
 
-	public static Player signUp(String name, String email, String password) {
-		if (findByEmail(email) == null) {
-			Player newPlayer = PlayerController.create(name, email, password);
-			Session.setPlayer(newPlayer);
-			return newPlayer;
+	public static Player signUp(String name, String email, String password) throws Exception {
+		if (name.length() == 0) {
+			throw new Exception("Nome não pode ser vazio.");
 		}
 
-		return null;
+		if (email.length() == 0) {
+			throw new Exception("Email não pode ser vazio.");
+		}
+
+		if (Form.verifyEmail(email) == false) {
+			throw new Exception("Email não é válido.");
+		}
+
+		if (password.length() < 8) {
+			throw new Exception("Senha deve ter no mínimo 8 caracteres.");
+		}
+
+		if (findByEmail(email) != null) {
+			throw new Exception("Email já cadastrado");
+		}
+
+		Player newPlayer = PlayerController.create(name, email, password);
+		Session.setPlayer(newPlayer);
+		return newPlayer;
+
 	}
 
 	public static User signIn(String email, String password) {

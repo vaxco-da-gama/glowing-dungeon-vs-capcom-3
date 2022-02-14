@@ -2,6 +2,7 @@ package Game.Controllers;
 
 import Game.Database.Database;
 import Game.Models.Users.Admin;
+import Game.Utils.Form;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -42,7 +43,7 @@ public class AdminController implements Controller {
 		return null;
 	}
 
-	public static Admin create(String name, String email, String password) {
+	public static Admin create(String name, String email, String password) throws Exception {
 		String adminId = UUID.randomUUID().toString();
 
 		Admin admin = new Admin(adminId, name, email, password);
