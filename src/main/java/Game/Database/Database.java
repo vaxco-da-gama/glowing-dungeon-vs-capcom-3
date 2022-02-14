@@ -42,7 +42,11 @@ public final class Database {
 			FileReader fileReader = new FileReader(pathname);
 			BufferedReader buffer = new BufferedReader(fileReader);
 
-			return buffer.readLine();
+			String value = buffer.readLine();
+			buffer.close();
+
+			return value;
+
 		} catch (Exception e) {
 			return "";
 		}

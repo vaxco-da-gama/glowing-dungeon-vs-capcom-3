@@ -29,6 +29,10 @@ public class AuthView extends JFrame {
 	private JPasswordField suConfirmPasswordField;
 	private JButton suSubmitButton;
 
+	public AuthView() {
+		setContentPane(container);
+	}
+
 	public void render() {
 		setContentPane(container);
 		setTitle("Stock Control | Products");

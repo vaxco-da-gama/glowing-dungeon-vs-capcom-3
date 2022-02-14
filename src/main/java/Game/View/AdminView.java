@@ -21,7 +21,6 @@ public class AdminView extends JFrame {
 	private JButton clansButton1;
 	private JButton attacksButton;
 	private JButton inimigosButton1;
-	private JButton wavesButton;
 	private JButton zonasButton;
 	private JPanel submitContainer;
 	private JButton submitButton;
