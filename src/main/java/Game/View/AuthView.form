@@ -16,7 +16,7 @@
         </constraints>
         <properties>
           <continuousLayout value="true"/>
-          <dividerLocation value="800"/>
+          <dividerLocation value="256"/>
           <dividerSize value="20"/>
         </properties>
         <border type="none"/>
@@ -43,7 +43,9 @@
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
-                <properties/>
+                <properties>
+                  <text value="admin@gmail.com"/>
+                </properties>
               </component>
               <component id="3456b" class="javax.swing.JLabel" binding="siPassLabel">
                 <constraints>
@@ -77,7 +79,9 @@
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
-                <properties/>
+                <properties>
+                  <text value="senha123"/>
+                </properties>
               </component>
             </children>
           </grid>
@@ -163,12 +167,12 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="af543" class="javax.swing.JButton" binding="suButton">
+              <component id="cc25a" class="javax.swing.JButton" binding="suSubmitButton">
                 <constraints>
                   <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Criar Conta"/>
+                  <text value="Cadastrar"/>
                 </properties>
               </component>
             </children>

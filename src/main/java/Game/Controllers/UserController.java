@@ -3,6 +3,7 @@ package Game.Controllers;
 import Game.Models.Users.Admin;
 import Game.Models.Users.Player;
 import Game.Models.Users.User;
+import Game.Utils.Crypto;
 import Game.Utils.Session;
 
 import java.util.ArrayList;
@@ -64,14 +65,14 @@ public class UserController implements Controller {
 		List<Player> players = PlayerController.findAll();
 
 		for (Admin admin : admins) {
-			if (admin.getEmail().equalsIgnoreCase(email) && admin.getPassword().equals(password)) {
+			if (admin.getEmail().equalsIgnoreCase(email) && admin.getPassword().equals(Crypto.getHashMd5(password))) {
 				Session.setAdmin(admin);
 				return admin;
 			}
 		}
 
 		for (Player player : players) {
-			if (player.getEmail().equalsIgnoreCase(email) && player.getPassword().equals(password)) {
+			if (player.getEmail().equalsIgnoreCase(email) && player.getPassword().equals(Crypto.getHashMd5(password))) {
 				Session.setPlayer(player);
 				return player;
 			}

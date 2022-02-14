@@ -2,9 +2,7 @@ package Game.View;
 
 import javax.swing.*;
 
-import Game.Controllers.PlayerController;
 import Game.Controllers.UserController;
-import Game.Models.Users.Player;
 import Game.Models.Users.User;
 import Game.Utils.Session;
 
@@ -29,23 +27,20 @@ public class AuthView extends JFrame {
 	private JPasswordField siPasswordField;
 	private JLabel suConfirmPassLabel;
 	private JPasswordField suConfirmPasswordField;
-	private JButton suButton;
+	private JButton suSubmitButton;
 
-	public AuthView() throws HeadlessException {
-		setupListeners();
-		render();
-	}
-
-	private void render() {
+	public void render() {
 		setContentPane(container);
 		setTitle("Stock Control | Products");
 		setSize(400, 800);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
+
+		setupListeners();
 	}
 
 	private void setupListeners() {
-		suButton.addActionListener(new ActionListener() {
+		suSubmitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				try {
@@ -116,7 +111,8 @@ public class AuthView extends JFrame {
 
 		if (Session.getAdmin() != null) {
 			this.dispose();
-			// new AdminView();
+			AdminView adminView = new AdminView();
+			adminView.render();
 		}
 
 		if (Session.getPlayer() != null) {

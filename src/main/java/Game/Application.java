@@ -15,6 +15,7 @@ public class Application {
 	}
 
 	public static void renderPages() {
-		new AuthView();
+		AuthView authView = new AuthView();
+		authView.render();
 	}
 }
