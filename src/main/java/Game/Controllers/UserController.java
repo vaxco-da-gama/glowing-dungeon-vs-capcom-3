@@ -32,10 +32,10 @@ public class UserController implements Controller {
 		return null;
 	}
 
-	public static User create(String name, String email, String password, int level) {
+	public static User create(String name, String email, String password) {
 		String userId = UUID.randomUUID().toString();
 
-		User user = new User(userId, name, email, password, level);
+		User user = new User(userId, name, email, password);
 		users.add(user);
 
 		return user;
@@ -51,7 +51,6 @@ public class UserController implements Controller {
 		user.setEmail(newUser.getEmail());
 		user.setName(newUser.getName());
 		user.setPassword(newUser.getPassword());
-		user.setLevel(newUser.getLevel());
 
 		return user;
 	}

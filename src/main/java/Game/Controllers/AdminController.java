@@ -3,11 +3,13 @@ package Game.Controllers;
 import Game.Database.Database;
 import Game.Models.Users.Admin;
 
+import Game.Utils.Crypto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.lang.reflect.Type;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -32,10 +34,11 @@ public class AdminController implements Controller {
 		return null;
 	}
 
-	public static Admin create(String name, String email, String password, int level) {
+	public static Admin create(String name, String email, String password) {
 		String adminId = UUID.randomUUID().toString();
-
-		Admin admin = new Admin(adminId, name, email, password, level);
+		String crytoPassword = Crypto.getHashMd5(password);
+			
+		Admin admin = new Admin(adminId, name, email, crytoPassword);
 		admins.add(admin);
 
 		return admin;
@@ -51,7 +54,6 @@ public class AdminController implements Controller {
 		admin.setEmail(newAdmin.getEmail());
 		admin.setName(newAdmin.getName());
 		admin.setPassword(newAdmin.getPassword());
-		admin.setLevel(newAdmin.getLevel());
 
 		return admin;
 	}

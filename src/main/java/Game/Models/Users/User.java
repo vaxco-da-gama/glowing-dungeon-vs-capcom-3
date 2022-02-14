@@ -5,14 +5,12 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
-	private int level;
 
-	public User(String id, String name, String email, String password, int level) {
+	public User(String id, String name, String email, String password) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.level = level;
 	}
 
 	public String getId() {
@@ -42,13 +40,4 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-
 }

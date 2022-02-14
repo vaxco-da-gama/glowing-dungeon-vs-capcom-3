@@ -9,8 +9,8 @@ public class Player extends User {
 	private int loses;
 	private List<Character> characters = new ArrayList<>();
 
-	public Player(String id, String name, String email, String password, int level) {
-		super(id, name, email, password, level);
+	public Player(String id, String name, String email, String password) {
+		super(id, name, email, password);
 		this.matches = 0;
 		this.wins = 0;
 		this.loses = 0;
