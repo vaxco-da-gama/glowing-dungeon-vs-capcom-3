@@ -1,43 +1,36 @@
 package Game.View;
 
 import Game.Config.Screen;
-import Game.Controllers.ClanController;
-import Game.Models.Domain.Attack;
-import Game.Models.Domain.Clan;
+import Game.Controllers.ZoneController;
+import Game.Models.Domain.Zone;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
-public class AdminClanView extends JFrame{
+public class AdminClanView extends JFrame {
 	private JPanel container;
 	private JPanel form;
+	private JPanel submitContainer;
+	private JTable zoneTable;
 	private JTextField nameField;
 	private JTextArea descriptionField;
-	private JPanel submitContainer;
-	private JTable clanTable;
-	
-	private JButton submitButton;
-	private JButton removeButton;	
-	private JButton backButton;	
-	
-	private JPanel Waves;
-	private JTextField constituitonField;
-	private JTextField strengthField;
-	private JTextField dexterityField;
-	private JTextField intelligenceField;
 
-	private List<Clan> clans;	
+	private JButton submitButton;
+	private JButton removeButton;
+	private JButton backButton;
+
+	private JPanel Waves;
+	private List<Zone> zones;
 
 	public void render() {
 		setupListeners();
 
 		setContentPane(container);
-		setTitle("Cadastro de Zona");
+		setTitle("Cadastro de Clan");
 		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,29 +40,18 @@ public class AdminClanView extends JFrame{
 	}
 
 	private void fillTable() {
-		String[] columns = { 
-			"Nome", 
-			"Descrição", 
-			"Constituição", 
-			"Inteligência", 
-			"Força", 
-			"Destreza" 
-		};
+		String[] columns = { "Nome", "Descrição" };
 		DefaultTableModel tableModel = getTableModel();
 
 		tableModel.setColumnIdentifiers(columns);
-		clanTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		zoneTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		clans = ClanController.findAll();
+		zones = ZoneController.findAll();
 
-		for (Clan clan : clans) {
+		for (Zone zone : zones) {
 			tableModel.addRow(new Object[] {
-				clan.getName(),
-				clan.getDescription(),
-				clan.getConstitutionMultiplier(),
-				clan.getIntelligenceMultiplier(),
-				clan.getStrengthMultiplier(),
-				clan.getDexterityMultiplier()
+					zone.getName(),
+					zone.getDescription()
 			});
 		}
 	}
@@ -85,78 +67,58 @@ public class AdminClanView extends JFrame{
 		submitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addClan();
+				addZone();
 			}
 		});
 
 		removeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				removeClan();
+				removeZone();
 			}
 		});
 	}
 
-	private void addClan() {
+	private void addZone() {
 		try {
 			String name = nameField.getText();
 			String description = descriptionField.getText();
-			int constitutionMultiplier = Integer.parseInt(constituitonField.getText());
-			int strengthMultiplier = Integer.parseInt(strengthField.getText());
-			int intelligenceMultiplier = Integer.parseInt(intelligenceField.getText());
-			int dexterityMultiplier = Integer.parseInt(dexterityField.getText());
-			List<Attack> attacks = new ArrayList<>();			
-			
-			ClanController.create(
-				name,
-				description,
-				attacks,
-				constitutionMultiplier,
-				strengthMultiplier,
-				intelligenceMultiplier,
-				dexterityMultiplier
-			);
-				
-			String[] data = new String[6];
+			ZoneController.create(name, description);
+
+			String[] data = new String[2];
 			data[0] = name;
 			data[1] = description;
-			data[2] = Integer.toString(constitutionMultiplier);
-			data[3] = Integer.toString(strengthMultiplier);
-			data[4] = Integer.toString(intelligenceMultiplier);
-			data[5] = Integer.toString(dexterityMultiplier);
 
 			DefaultTableModel tableModel = getTableModel();
 			tableModel.addRow(data);
 			tableModel.fireTableDataChanged();
 			clearFields();
-		} catch (NumberFormatException e) {
-			showDialogMessage("Informe os multiplicadores corretamente!");
 		} catch (Exception e) {
 			showDialogMessage(e.getMessage());
 		}
 	}
-	
-	private void removeClan() {
+
+	private void removeZone() {
 		DefaultTableModel tableModel = getTableModel();
 
-		if (clanTable.getRowCount() == 0) {
-			showDialogMessage("Não existem clans cadastrados!");
+		if (zoneTable.getRowCount() == 0) {
+			showDialogMessage("Não existem zonas cadastradas!");
 			return;
 		}
 
-		if (clanTable.getSelectedRowCount() == 0) {
-			showDialogMessage("Selecione um clan para ser removido!");
+		if (zoneTable.getSelectedRowCount() == 0) {
+			showDialogMessage("Selecione uma zona para ser removida!");
 			return;
 		}
 
-		int row = clanTable.getSelectedRow();
-		Clan clan = clans.get(row);
+		int row = zoneTable.getSelectedRow();
+		Zone zone = zones.get(row);
 
-		if (clan != null) {
-			ClanController.delete(clan.getId());
+		if (zone != null) {
+			ZoneController.delete(zone.getId());
 			tableModel.removeRow(row);
 		} else {
-			showDialogMessage("Erro ao remover clan!");
+			showDialogMessage("Erro ao remover zona!");
 		}
 	}
 
@@ -171,7 +133,7 @@ public class AdminClanView extends JFrame{
 	}
 
 	private DefaultTableModel getTableModel() {
-		return (DefaultTableModel) clanTable.getModel();
+		return (DefaultTableModel) zoneTable.getModel();
 	}
 
 	private void showDialogMessage(String message) {
@@ -181,9 +143,5 @@ public class AdminClanView extends JFrame{
 	private void clearFields() {
 		nameField.setText("");
 		descriptionField.setText("");
-		constituitonField.setText("1");
-		strengthField.setText("1");
-		intelligenceField.setText("1");
-		dexterityField.setText("1");
 	}
 }

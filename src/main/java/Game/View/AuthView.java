@@ -32,7 +32,6 @@ public class AuthView extends JFrame {
 
 	public void render() {
 		setContentPane(container);
-
 		setTitle("Login");
 		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
