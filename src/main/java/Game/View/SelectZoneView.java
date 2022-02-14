@@ -1,6 +1,9 @@
 package Game.View;
 
 import javax.swing.*;
+
+import Game.Config.Screen;
+
 import java.awt.*;
 
 public class SelectZoneView extends JFrame {
@@ -16,7 +19,7 @@ public class SelectZoneView extends JFrame {
 	private void render() {
 		setContentPane(container);
 		setTitle("Glowing Dungeon VS Capcom | Products");
-		setSize(400, 800);
+		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
