@@ -92,7 +92,11 @@ public class AuthView extends JFrame {
 
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
 
-		// this.dispose();
+		if (Session.getPlayer() != null) {
+			this.dispose();
+			PlayerView playerView = new PlayerView();
+			playerView.render();
+		}
 	}
 
 	private void signIn() {
@@ -121,9 +125,8 @@ public class AuthView extends JFrame {
 
 		if (Session.getPlayer() != null) {
 			this.dispose();
-			// new PlayerView();
+			PlayerView playerView = new PlayerView();
+			playerView.render();
 		}
-
-		// this.dispose();
 	}
 }
