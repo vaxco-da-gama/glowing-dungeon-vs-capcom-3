@@ -1,12 +1,11 @@
 package Game.View;
 
 import javax.swing.*;
-import javax.swing.text.ZoneView;
 
+import Game.Config.Screen;
 import Game.Controllers.UserController;
 import Game.Database.Database;
 
-import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -31,7 +30,7 @@ public class AdminView extends JFrame {
 	public void render() {
 		setContentPane(container);
 		setTitle("Stock Control | Products");
-		setSize(400, 800);
+		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
 
@@ -53,6 +52,34 @@ public class AdminView extends JFrame {
 			}
 		});
 
+		clansButton1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToClanView();
+			}
+		});
+
+		attacksButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToAttackView();
+			}
+		});
+
+		inimigosButton1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToEnemyView();
+			}
+		});
+
+		usuariosAdminsButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToCreateAdminView();
+			}
+		});
+
 		saveButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
@@ -68,8 +95,48 @@ public class AdminView extends JFrame {
 
 	private void redirectToZoneView() {
 		try {
-			ZoneAdminView zoneAdminView = new ZoneAdminView();
-			zoneAdminView.render();
+			AdminZoneView view = new AdminZoneView();
+			view.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void redirectToAttackView() {
+		try {
+			AdminAttackView view = new AdminAttackView();
+			view.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void redirectToClanView() {
+		try {
+			AdminClanView view = new AdminClanView();
+			view.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void redirectToCreateAdminView() {
+		try {
+			AdminCreateView view = new AdminCreateView();
+			view.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void redirectToEnemyView() {
+		try {
+			AdminEnemyView view = new AdminEnemyView();
+			view.render();
 			dispose();
 		} catch (Exception e) {
 			e.printStackTrace();
