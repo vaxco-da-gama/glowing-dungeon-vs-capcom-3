@@ -86,6 +86,8 @@ public class CharacterController implements Controller {
 
 		ArrayList<Character> characterArray = gson.fromJson(stringFile, type);
 
-		characters = characterArray;
+		if (characterArray != null) {
+			characters = characterArray;
+		}
 	}
 }

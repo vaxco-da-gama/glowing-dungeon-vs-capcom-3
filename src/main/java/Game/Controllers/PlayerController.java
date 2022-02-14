@@ -22,6 +22,16 @@ public class PlayerController implements Controller {
 		return players;
 	}
 
+	public static Player findByEmail(String email) {
+		for (Player player : players) {
+			if (player.getEmail().equalsIgnoreCase(email)) {
+				return player;
+			}
+		}
+
+		return null;
+	}
+
 	public static Player findById(String id) {
 		for (Player player : players) {
 			if (player.getId().equalsIgnoreCase(id)) {
@@ -32,10 +42,10 @@ public class PlayerController implements Controller {
 		return null;
 	}
 
-	public static Player create(String name, String email, String password, int level) {
+	public static Player create(String name, String email, String password) {
 		String playerId = UUID.randomUUID().toString();
 
-		Player player = new Player(playerId, name, email, password, level);
+		Player player = new Player(playerId, name, email, password);
 		players.add(player);
 
 		return player;
@@ -51,7 +61,6 @@ public class PlayerController implements Controller {
 		player.setEmail(newPlayer.getEmail());
 		player.setName(newPlayer.getName());
 		player.setPassword(newPlayer.getPassword());
-		player.setLevel(newPlayer.getLevel());
 
 		return player;
 	}
@@ -84,6 +93,8 @@ public class PlayerController implements Controller {
 
 		ArrayList<Player> playerArray = gson.fromJson(stringFile, type);
 
-		players = playerArray;
+		if (playerArray != null) {
+			players = playerArray;
+		}
 	}
 }

@@ -49,19 +49,6 @@ public class WaveView extends JFrame {
 	}
 
 	private void setupEnemies() {
-		Enemies = new JPanel();
-		Enemies.setLayout(new GridLayout(3, 2));
 
-		Enemy1 = new JLabel("Enemy 1");
-		Enemie1Life.setValue(50);
-
-		Enemy2 = new JLabel("Enemy 2");
-		Enemie2Life.setValue(50);
-
-		Enemy3.setText("Oi");
-		Enemie3Life.setValue(50);
-
-		JLabel newJLabel = new JLabel("oi");
-		Enemies.add(newJLabel);
 	}
 }

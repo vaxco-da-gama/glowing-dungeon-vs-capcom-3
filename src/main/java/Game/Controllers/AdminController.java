@@ -22,6 +22,16 @@ public class AdminController implements Controller {
 		return admins;
 	}
 
+	public static Admin findByEmail(String email) {
+		for (Admin admin : admins) {
+			if (admin.getEmail().equalsIgnoreCase(email)) {
+				return admin;
+			}
+		}
+
+		return null;
+	}
+
 	public static Admin findById(String id) {
 		for (Admin admin : admins) {
 			if (admin.getId().equalsIgnoreCase(id)) {
@@ -32,10 +42,10 @@ public class AdminController implements Controller {
 		return null;
 	}
 
-	public static Admin create(String name, String email, String password, int level) {
+	public static Admin create(String name, String email, String password) {
 		String adminId = UUID.randomUUID().toString();
 
-		Admin admin = new Admin(adminId, name, email, password, level);
+		Admin admin = new Admin(adminId, name, email, password);
 		admins.add(admin);
 
 		return admin;
@@ -51,7 +61,6 @@ public class AdminController implements Controller {
 		admin.setEmail(newAdmin.getEmail());
 		admin.setName(newAdmin.getName());
 		admin.setPassword(newAdmin.getPassword());
-		admin.setLevel(newAdmin.getLevel());
 
 		return admin;
 	}
@@ -84,6 +93,8 @@ public class AdminController implements Controller {
 
 		ArrayList<Admin> adminArray = gson.fromJson(stringFile, type);
 
-		admins = adminArray;
+		if (adminArray != null) {
+			admins = adminArray;
+		}
 	}
 }

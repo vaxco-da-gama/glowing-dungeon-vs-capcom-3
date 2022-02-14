@@ -89,6 +89,9 @@ public class EnemyController implements Controller {
 
 		ArrayList<Enemy> enemyArray = gson.fromJson(stringFile, type);
 
-		enemies = enemyArray;
+		if (enemyArray != null) {
+			enemies = enemyArray;
+		}
+
 	}
 }
