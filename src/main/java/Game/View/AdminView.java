@@ -36,7 +36,7 @@ public class AdminView extends JFrame {
 
 		setupListeners();
 	}
-
+	
 	private void setupListeners() {
 		signOutButton.addActionListener(new ActionListener() {
 			@Override

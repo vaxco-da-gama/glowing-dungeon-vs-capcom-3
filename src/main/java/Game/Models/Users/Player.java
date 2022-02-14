@@ -9,7 +9,7 @@ public class Player extends User {
 	private int loses;
 	private List<Character> characters = new ArrayList<>();
 
-	public Player(String id, String name, String email, String password) {
+	public Player(String id, String name, String email, String password) throws Exception {
 		super(id, name, email, password);
 		this.matches = 0;
 		this.wins = 0;

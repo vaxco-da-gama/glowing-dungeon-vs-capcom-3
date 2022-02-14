@@ -1,5 +1,6 @@
 package Game.Utils;
 
+import Game.Models.Domain.Zone;
 import Game.Models.Users.Admin;
 import Game.Models.Users.Player;
 
@@ -7,6 +8,7 @@ public class Session {
 	private static Admin admin;
 	private static Player player;
 	private static Character character;
+	private static Zone zone;
 
 	public static Admin getAdmin() {
 		return admin;
@@ -30,5 +32,13 @@ public class Session {
 
 	public static void setCharacter(Character character) {
 		Session.character = character;
+	}
+
+	public static Zone getZone() {
+		return zone;
+	}
+
+	public static void setZone(Zone zone) {
+		Session.zone = zone;
 	}
 }

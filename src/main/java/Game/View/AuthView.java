@@ -32,6 +32,7 @@ public class AuthView extends JFrame {
 
 	public void render() {
 		setContentPane(container);
+
 		setTitle("Login");
 		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -80,11 +81,11 @@ public class AuthView extends JFrame {
 			return;
 		}
 
-		User newUser = UserController.signUp(name, email, password);
-
-		if (newUser == null) {
-			JOptionPane.showMessageDialog(null, "Email já cadastrado!");
-			return;
+		try {
+			UserController.signUp(name, email, password);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			e.printStackTrace();
 		}
 
 		JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
