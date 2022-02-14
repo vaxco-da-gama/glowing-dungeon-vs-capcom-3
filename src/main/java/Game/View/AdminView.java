@@ -52,6 +52,34 @@ public class AdminView extends JFrame {
 			}
 		});
 
+		clansButton1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToClanView();
+			}
+		});
+
+		attacksButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToAttackView();
+			}
+		});
+
+		inimigosButton1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToEnemyView();
+			}
+		});
+
+		usuariosAdminsButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToCreateAdminView();
+			}
+		});
+
 		saveButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
@@ -67,8 +95,48 @@ public class AdminView extends JFrame {
 
 	private void redirectToZoneView() {
 		try {
-			AdminZoneView zoneAdminView = new AdminZoneView();
-			zoneAdminView.render();
+			AdminZoneView view = new AdminZoneView();
+			view.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void redirectToAttackView() {
+		try {
+			AdminAttackView view = new AdminAttackView();
+			view.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void redirectToClanView() {
+		try {
+			AdminClanView view = new AdminClanView();
+			view.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void redirectToCreateAdminView() {
+		try {
+			AdminCreateView view = new AdminCreateView();
+			view.render();
+			dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void redirectToEnemyView() {
+		try {
+			AdminEnemyView view = new AdminEnemyView();
+			view.render();
 			dispose();
 		} catch (Exception e) {
 			e.printStackTrace();
