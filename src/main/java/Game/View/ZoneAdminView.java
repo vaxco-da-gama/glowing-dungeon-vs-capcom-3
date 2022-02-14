@@ -17,10 +17,13 @@ public class ZoneAdminView extends JFrame {
 	private JTable zoneTable;
 	private JTextField nameField;
 	private JTextArea descriptionField;
+	
 	private JButton submitButton;
 	private JButton removeButton;
-	private JButton voltarButton;
+	private JButton backButton;
+	
 	private JPanel Waves;
+	private List<Zone> zones;
 
 	public void render() {
 		setupListeners();
@@ -42,18 +45,18 @@ public class ZoneAdminView extends JFrame {
 		tableModel.setColumnIdentifiers(columns);
 		zoneTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		List<Zone> zones = ZoneController.findAll();
+		zones = ZoneController.findAll();
 
-		for (int i = 0; i < zones.size(); i++) {
-			tableModel.addRow(new Object[] {
-					zones.get(i).getName(),
-					zones.get(i).getDescription()
+		for (Zone zone : zones) {
+			tableModel.addRow(new Object[]{
+				zone.getName(),
+				zone.getDescription()
 			});
 		}
 	}
 
 	private void setupListeners() throws HeadlessException {
-		voltarButton.addActionListener(new ActionListener() {
+		backButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				redirectToAdminView();
@@ -88,24 +91,34 @@ public class ZoneAdminView extends JFrame {
 			DefaultTableModel tableModel = getTableModel();
 			tableModel.addRow(data);
 			tableModel.fireTableDataChanged();
+			clearFields();
 		} catch (Exception e) {
-			e.printStackTrace();
+			showDialogMessage(e.getMessage());
 		}
 	}
 
 	private void removeZone() {
 		DefaultTableModel tableModel = getTableModel();
-		if (zoneTable.getSelectedRowCount() == 0) {
-			return;
-		}
 
 		if (zoneTable.getRowCount() == 0) {
+			showDialogMessage("Não existem zonas cadastradas!");
 			return;
 		}
 
+		if (zoneTable.getSelectedRowCount() == 0) {
+			showDialogMessage("Selecione uma zona para ser removida!");
+			return;
+		}
+		
 		int row = zoneTable.getSelectedRow();
-
-		tableModel.removeRow(row);
+		Zone zone = zones.get(row);
+		
+		if (zone != null) {
+			ZoneController.delete(zone.getId());
+			tableModel.removeRow(row);	
+		} else {
+			showDialogMessage("Erro ao remover zona!");
+		}		
 	}
 
 	private void redirectToAdminView() {
@@ -114,12 +127,20 @@ public class ZoneAdminView extends JFrame {
 			adminView.render();
 			dispose();
 		} catch (Exception e) {
-			e.printStackTrace();
+			showDialogMessage("Erro ao redirecionar para a tela de admin!");
 		}
 	}
 
 	private DefaultTableModel getTableModel() {
 		return (DefaultTableModel) zoneTable.getModel();
 	}
-
+	
+	private void showDialogMessage (String message) {
+		JOptionPane.showMessageDialog(this, message);		
+	}
+	
+	private void clearFields () {
+		nameField.setText("");
+		descriptionField.setText("");		
+	}
 }
