@@ -1,5 +1,7 @@
 package Game.View;
 
+import Game.Controllers.ZoneController;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -50,13 +52,22 @@ public class ZoneAdminView extends JFrame {
 		});
 	}
 	
-	private void addZone () {
+	private void addZone () {				
+			try {
+				String name = nameField.getText();
+				String description = descriptionField.getText();
+				ZoneController.create(name, description);
+				
 				String[] data = new String[2];
-				data[0] = nameField.getText();
-				data[1] = descriptionField.getText();
+				data[0] = name;
+				data[1] = description;
+				
 				DefaultTableModel tableModel = getTableModel();
 				tableModel.addRow(data);
 				tableModel.fireTableDataChanged();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	private void removeZone () {

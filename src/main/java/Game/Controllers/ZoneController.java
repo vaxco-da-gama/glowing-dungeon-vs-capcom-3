@@ -36,14 +36,11 @@ public class ZoneController implements Controller {
 		return null;
 	}
 
-	public static Zone create(String name, String description, Admin creator,
-			List<User> bannedUsers,
-			List<Wave> waves) {
-
+	public static Zone create(String name, String description) throws Exception {
 		String zoneId = UUID.randomUUID().toString();
 
-		Zone zone = new Zone(zoneId, name, description, creator, bannedUsers, waves);
-
+		Zone zone = new Zone(zoneId, name, description, null);
+		
 		zones.add(zone);
 
 		return zone;

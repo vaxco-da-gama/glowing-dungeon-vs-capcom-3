@@ -12,17 +12,32 @@ public class Zone {
 	private String name;
 	private String description;
 	private Admin creator;
-	private List<User> bannedUsers = new ArrayList<>();
-	private List<Wave> waves = new ArrayList<>();
+	private List<User> bannedUsers;
+	private List<Wave> waves;
 
-	public Zone(String id, String name, String description, Admin creator, List<User> bannedUsers,
-			List<Wave> waves) {
+	public Zone(String id, String name, String description, Admin creator) throws Exception {
+		if (id.length() == 0) {
+			throw new Exception("ID Inválido!");
+		}
+		
+		if (name.length() == 0) {
+			throw new Exception("Nome Inválido!");
+		}
+		
+		if (description.length() == 0) {
+			throw new Exception("Descrição Inválida!");
+		}
+		
+//		if (creator == null) {
+//			throw new Exception("Admin Inválido!");
+//		}	
+		
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.creator = creator;
-		this.bannedUsers = bannedUsers;
-		this.waves = waves;
+		this.bannedUsers = new ArrayList<>();
+		this.waves = new ArrayList<>();		
 	}
 
 	public String getId() {
