@@ -13,9 +13,28 @@ public class Clan {
 	private int intelligenceMultiplier;
 	private int dexterityMultiplier;
 
-	public Clan(String id, String name, String description, List<Attack> attacks, int constitutionMultiplier,
+	public Clan(
+			String id, 
+			String name, 
+			String description, 
+			List<Attack> attacks, 
+			int constitutionMultiplier,
 			int strengthMultiplier,
-			int intelligenceMultiplier, int dexterityMultiplier) {
+			int intelligenceMultiplier, 
+			int dexterityMultiplier
+	) throws Exception {
+		if (id.length() == 0) {
+			throw new Exception("ID Inválido!");
+		}
+
+		if (name.length() == 0) {
+			throw new Exception("Nome Inválido!");
+		}
+
+		if (description.length() == 0) {
+			throw new Exception("Descrição Inválida!");
+		}
+		
 		this.id = id;
 		this.name = name;
 		this.description = description;
