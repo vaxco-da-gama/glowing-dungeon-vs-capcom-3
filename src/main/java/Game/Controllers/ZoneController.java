@@ -3,6 +3,8 @@ package Game.Controllers;
 import Game.Database.Database;
 import Game.Models.Domain.Zone;
 
+import Game.Models.Users.Admin;
+import Game.Utils.Session;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -34,8 +36,9 @@ public class ZoneController implements Controller {
 
 	public static Zone create(String name, String description) throws Exception {
 		String zoneId = UUID.randomUUID().toString();
+		Admin admin = Session.getAdmin();
 
-		Zone zone = new Zone(zoneId, name, description, null);
+		Zone zone = new Zone(zoneId, name, description, admin);
 
 		zones.add(zone);
 

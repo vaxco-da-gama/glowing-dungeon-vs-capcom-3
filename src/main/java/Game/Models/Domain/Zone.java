@@ -27,10 +27,10 @@ public class Zone {
 		if (description.length() == 0) {
 			throw new Exception("Descrição Inválida!");
 		}
-
-		// if (creator == null) {
-		// throw new Exception("Admin Inválido!");
-		// }
+		
+		if (creator == null) {
+		 	throw new Exception("Admin Inválido!");
+		}
 
 		this.id = id;
 		this.name = name;
