@@ -3,6 +3,7 @@ package Game.View;
 import javax.swing.*;
 import javax.swing.text.ZoneView;
 
+import Game.Config.Screen;
 import Game.Controllers.UserController;
 import Game.Database.Database;
 
@@ -31,7 +32,7 @@ public class AdminView extends JFrame {
 	public void render() {
 		setContentPane(container);
 		setTitle("Stock Control | Products");
-		setSize(400, 800);
+		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
 

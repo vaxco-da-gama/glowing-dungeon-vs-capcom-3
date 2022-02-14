@@ -1,5 +1,6 @@
 package Game.View;
 
+import Game.Config.Screen;
 import Game.Controllers.UserController;
 import Game.Database.Database;
 
@@ -15,7 +16,7 @@ public class PlayerView extends JFrame {
 	public void render() {
 		setContentPane(container);
 		setTitle("Página do Jogador");
-		setSize(400, 800);
+		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
 

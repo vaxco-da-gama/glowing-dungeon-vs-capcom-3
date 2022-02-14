@@ -1,6 +1,9 @@
 package Game.View;
 
 import javax.swing.*;
+
+import Game.Config.Screen;
+
 import java.awt.*;
 
 public class WaveView extends JFrame {
@@ -35,7 +38,7 @@ public class WaveView extends JFrame {
 	private void render() {
 		setContentPane(container);
 		setTitle("Stock Control | Products");
-		setSize(400, 800);
+		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
 	}

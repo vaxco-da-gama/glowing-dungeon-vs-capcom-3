@@ -1,5 +1,6 @@
 package Game.View;
 
+import Game.Config.Screen;
 import Game.Controllers.ZoneController;
 import Game.Models.Domain.Zone;
 
@@ -30,7 +31,7 @@ public class ZoneAdminView extends JFrame {
 
 		setContentPane(container);
 		setTitle("Cadastro de Zona");
-		setSize(400, 800);
+		setSize(Screen.getWidth(), Screen.getHeight());
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		fillTable();
