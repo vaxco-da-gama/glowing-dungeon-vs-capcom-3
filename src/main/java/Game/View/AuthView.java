@@ -96,7 +96,7 @@ public class AuthView extends JFrame {
 		// this.dispose();
 	}
 
-	private void SignIn() {
+	private void signIn() {
 		String email = siEmailField.getText();
 		String password = new String(siPasswordField.getPassword());
 
