@@ -43,7 +43,7 @@ public class ZoneAdminView extends JFrame {
 		zoneTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		List<Zone> zones = ZoneController.findAll();
-
+		
 		for (int i = 0; i < zones.size(); i++) {
 			tableModel.addRow(new Object[] {
 					zones.get(i).getName(),
@@ -121,5 +121,4 @@ public class ZoneAdminView extends JFrame {
 	private DefaultTableModel getTableModel() {
 		return (DefaultTableModel) zoneTable.getModel();
 	}
-
 }
