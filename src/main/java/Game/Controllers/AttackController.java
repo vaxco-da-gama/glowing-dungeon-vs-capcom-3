@@ -22,6 +22,16 @@ public class AttackController implements Controller {
 		return attacks;
 	}
 
+	public static Attack findByName(String name) {
+		for (Attack attack : attacks) {
+			if (attack.getName().equalsIgnoreCase(name)) {
+				return attack;
+			}
+		}
+
+		return null;
+	}
+
 	public static Attack findById(String id) {
 		for (Attack attack : attacks) {
 			if (attack.getId().equalsIgnoreCase(id)) {

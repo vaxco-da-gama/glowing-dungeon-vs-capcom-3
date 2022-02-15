@@ -34,7 +34,26 @@ public class CharacterController implements Controller {
 		return null;
 	}
 
-	public static Character create(Player creator, String name, Clan clan) {
+	public static Character findByName(String name) {
+		for (Character character : characters) {
+			if (character.getName().equalsIgnoreCase(name)) {
+				return character;
+			}
+		}
+
+		return null;
+	}
+
+	public static Character create(Player creator, String name, Clan clan) throws Exception {
+
+		if (creator == null || name == null || clan == null) {
+			throw new Exception("Nenhum dos parâmetros pode ser nulo.");
+
+		}
+
+		if (findByName(name) != null) {
+			throw new Exception("Personagem com o nome " + name + " já existe.");
+		}
 
 		String characterId = UUID.randomUUID().toString();
 

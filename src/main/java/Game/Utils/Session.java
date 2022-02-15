@@ -1,6 +1,7 @@
 package Game.Utils;
 
 import Game.Models.Domain.Zone;
+import Game.Models.Creatures.Character;
 import Game.Models.Users.Admin;
 import Game.Models.Users.Player;
 
@@ -38,7 +39,11 @@ public class Session {
 		return zone;
 	}
 
-	public static void setZone(Zone zone) {
+	public static void setZone(Zone zone) throws Exception {
+		if (Session.getCharacter() == null) {
+			throw new Exception("Personagem não selecionado");
+		}
+
 		Session.zone = zone;
 	}
 }
