@@ -1,6 +1,7 @@
 package Game.View;
 
 import Game.Config.Screen;
+import Game.Controllers.AttackController;
 import Game.Controllers.ClanController;
 import Game.Models.Domain.Attack;
 import Game.Models.Domain.Clan;
@@ -30,6 +31,7 @@ public class AdminClanView extends JFrame {
 	private JTextField strengthField;
 	private JTextField dexterityField;
 	private JTextField intelligenceField;
+	private JPanel checkBoxContainer;
 
 	private List<Clan> clans;
 
@@ -71,6 +73,13 @@ public class AdminClanView extends JFrame {
 					clan.getStrengthMultiplier(),
 					clan.getDexterityMultiplier()
 			});
+		}
+	}
+
+	private void fillAttacks() {
+		List<Attack> attacks = AttackController.findAll();
+		for (Attack attack : attacks) {
+			checkBoxContainer.add(new JCheckBox(attack.getName()));
 		}
 	}
 
