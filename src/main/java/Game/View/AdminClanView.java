@@ -13,25 +13,25 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminClanView extends JFrame{
+public class AdminClanView extends JFrame {
 	private JPanel container;
 	private JPanel form;
 	private JTextField nameField;
 	private JTextArea descriptionField;
 	private JPanel submitContainer;
 	private JTable clanTable;
-	
+
 	private JButton submitButton;
-	private JButton removeButton;	
-	private JButton backButton;	
-	
+	private JButton removeButton;
+	private JButton backButton;
+
 	private JPanel Waves;
 	private JTextField constituitonField;
 	private JTextField strengthField;
 	private JTextField dexterityField;
 	private JTextField intelligenceField;
 
-	private List<Clan> clans;	
+	private List<Clan> clans;
 
 	public void render() {
 		setupListeners();
@@ -47,13 +47,13 @@ public class AdminClanView extends JFrame{
 	}
 
 	private void fillTable() {
-		String[] columns = { 
-			"Nome", 
-			"Descrição", 
-			"Constituição", 
-			"Inteligência", 
-			"Força", 
-			"Destreza" 
+		String[] columns = {
+				"Nome",
+				"Descrição",
+				"Constituição",
+				"Inteligência",
+				"Força",
+				"Destreza"
 		};
 		DefaultTableModel tableModel = getTableModel();
 
@@ -64,12 +64,12 @@ public class AdminClanView extends JFrame{
 
 		for (Clan clan : clans) {
 			tableModel.addRow(new Object[] {
-				clan.getName(),
-				clan.getDescription(),
-				clan.getConstitutionMultiplier(),
-				clan.getIntelligenceMultiplier(),
-				clan.getStrengthMultiplier(),
-				clan.getDexterityMultiplier()
+					clan.getName(),
+					clan.getDescription(),
+					clan.getConstitutionMultiplier(),
+					clan.getIntelligenceMultiplier(),
+					clan.getStrengthMultiplier(),
+					clan.getDexterityMultiplier()
 			});
 		}
 	}
@@ -105,18 +105,17 @@ public class AdminClanView extends JFrame{
 			int strengthMultiplier = Integer.parseInt(strengthField.getText());
 			int intelligenceMultiplier = Integer.parseInt(intelligenceField.getText());
 			int dexterityMultiplier = Integer.parseInt(dexterityField.getText());
-			List<Attack> attacks = new ArrayList<>();			
-			
+			List<Attack> attacks = new ArrayList<>();
+
 			ClanController.create(
-				name,
-				description,
-				attacks,
-				constitutionMultiplier,
-				strengthMultiplier,
-				intelligenceMultiplier,
-				dexterityMultiplier
-			);
-				
+					name,
+					description,
+					attacks,
+					constitutionMultiplier,
+					strengthMultiplier,
+					intelligenceMultiplier,
+					dexterityMultiplier);
+
 			String[] data = new String[6];
 			data[0] = name;
 			data[1] = description;
@@ -135,7 +134,7 @@ public class AdminClanView extends JFrame{
 			showDialogMessage(e.getMessage());
 		}
 	}
-	
+
 	private void removeClan() {
 		DefaultTableModel tableModel = getTableModel();
 

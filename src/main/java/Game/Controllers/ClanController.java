@@ -33,15 +33,24 @@ public class ClanController implements Controller {
 		return null;
 	}
 
+	public static Clan findByName(String name) {
+		for (Clan clan : clans) {
+			if (clan.getName().equalsIgnoreCase(name)) {
+				return clan;
+			}
+		}
+
+		return null;
+	}
+
 	public static Clan create(
-		String name, 
-		String description, 
-		List<Attack> attacks, 
-		int constitutionMultiplier,
-		int strengthMultiplier,
-		int intelligenceMultiplier, 
-		int dexterityMultiplier
-	) throws Exception {
+			String name,
+			String description,
+			List<Attack> attacks,
+			int constitutionMultiplier,
+			int strengthMultiplier,
+			int intelligenceMultiplier,
+			int dexterityMultiplier) throws Exception {
 
 		String clanId = UUID.randomUUID().toString();
 

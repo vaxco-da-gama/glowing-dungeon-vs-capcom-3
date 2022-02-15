@@ -39,6 +39,13 @@ public class AdminCreateView extends JFrame {
 				}
 			}
 		});
+
+		voltarButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				redirectToAdminView();
+			}
+		});
 	}
 
 	private void createAdmin() {
@@ -53,9 +60,24 @@ public class AdminCreateView extends JFrame {
 		}
 	}
 
+	private void redirectToAdminView() {
+		try {
+			AdminView adminView = new AdminView();
+			adminView.render();
+			dispose();
+		} catch (Exception e) {
+			showDialogMessage("Erro ao redirecionar para a tela de admin!");
+		}
+	}
+
 	private void resetForm() {
 		nameInput.setText("");
 		emailInput.setText("");
 		passwordInput.setText("");
 	}
+
+	private void showDialogMessage(String message) {
+		JOptionPane.showMessageDialog(this, message);
+	}
+
 }
