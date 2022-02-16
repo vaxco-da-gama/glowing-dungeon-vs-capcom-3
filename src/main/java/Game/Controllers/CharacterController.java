@@ -57,7 +57,7 @@ public class CharacterController implements Controller {
 
 		String characterId = UUID.randomUUID().toString();
 
-		Character character = new Character(characterId, creator, name, clan);
+		Character character = new Character(characterId, name, clan, creator);
 
 		characters.add(character);
 

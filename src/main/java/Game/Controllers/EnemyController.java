@@ -38,7 +38,7 @@ public class EnemyController implements Controller {
 
 		String enemyId = UUID.randomUUID().toString();
 
-		Enemy enemy = new Enemy(enemyId, name, clan, level, creator, alive, boss);
+		Enemy enemy = new Enemy(enemyId, name, clan, creator, alive, boss);
 
 		enemies.add(enemy);
 

@@ -7,7 +7,7 @@ import Game.Models.Users.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Character implements Creature {
+public class Character extends Creature {
 	private String id;
 	private Player creator;
 	private String name;
@@ -23,21 +23,19 @@ public class Character implements Creature {
 	private List<Attack> attacks = new ArrayList<>();
 	private List<String> completedZones = new ArrayList<>();
 
-	public Character(String id, Player creator, String name, Clan clan) {
-		this.id = id;
-		this.creator = creator;
-		this.name = name;
-		this.clan = clan;
+	public Character(String id, String name, Clan clan, Player creator) {
+		super(id, name, clan);		
 		this.level = 1;
 		this.experience = 0;
 		this.maxMana = 10;
+		this.creator = creator;
 
 		this.constitution = this.clan.getConstitutionMultiplier();
 		this.strength = this.clan.getStrengthMultiplier();
 		this.intelligence = this.clan.getIntelligenceMultiplier();
 		this.dexterity = this.clan.getDexterityMultiplier();
 	}
-
+	
 	public String getId() {
 		return id;
 	}
