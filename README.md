@@ -19,7 +19,6 @@
 - View
   > Telas
 
-
 # Funcionalidades Exigidas
 
 - Herança
@@ -36,3 +35,5 @@
   - Contrutores de Usuário
 - Interface Gráfica
   - Views
+- Banco de Dados
+  - Pasta Database e Controllers -> usando GSON
