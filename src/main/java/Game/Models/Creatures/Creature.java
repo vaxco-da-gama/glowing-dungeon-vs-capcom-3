@@ -3,10 +3,10 @@ package Game.Models.Creatures;
 import Game.Models.Domain.Clan;
 
 abstract class Creature {
-	private String id;
-	private String name;
-	private Clan clan;
-	private int level;
+	 protected String id;
+	 protected String name;
+	 protected Clan clan;
+	protected int level;
 
 	public Creature(String id, String name, Clan clan) {
 		this.id = id;

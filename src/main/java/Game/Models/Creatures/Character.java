@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Character extends Creature {
-	private String id;
 	private Player creator;
-	private String name;
-	private Clan clan;
-	private int level;
 	private int experience;
 	private int mana;
 	private int maxMana;
@@ -34,42 +30,6 @@ public class Character extends Creature {
 		this.strength = this.clan.getStrengthMultiplier();
 		this.intelligence = this.clan.getIntelligenceMultiplier();
 		this.dexterity = this.clan.getDexterityMultiplier();
-	}
-	
-	public String getId() {
-		return id;
-	}
-
-	public Player getCreator() {
-		return creator;
-	}
-
-	public void setCreator(Player creator) {
-		this.creator = creator;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Clan getClan() {
-		return clan;
-	}
-
-	public void setClan(Clan clan) {
-		this.clan = clan;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
 	}
 
 	public int getExperience() {

@@ -16,14 +16,6 @@ public class Enemy extends Creature {
 		this.boss = boss;
 	}
 
-	public Admin getCreator() {
-		return creator;
-	}
-
-	public void setCreator(Admin creator) {
-		this.creator = creator;
-	}
-
 	public boolean isAlive() {
 		return alive;
 	}
